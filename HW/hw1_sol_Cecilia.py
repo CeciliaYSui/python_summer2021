@@ -33,13 +33,13 @@ class Portfolio():
         total = shares * stock.price
         self.cash -= total
         self.stocks[stock.symbol] = [shares, stock.price]
-        self.hist_log.append("Purchased {} share(s) of {} stock for ${} per share with a total of ${}".format(shares,stock.symbol, stock.price, total)) 
+        self.hist_log.append("Purchased {} share(s) of {} stock for ${} per share with a total of ${}.".format(shares,stock.symbol, stock.price, total)) 
 
     def buyMutualFund(self, shares, mutualfund):
         total = shares * mutualfund.price
         self.cash -= total
         self.mfs[mutualfund.symbol] = shares
-        self.hist_log.append("Purchased {} share(s) of {} mutual fund for $1 per share with a total of ${}".format(shares,mutualfund.symbol,total)) 
+        self.hist_log.append("Purchased {} share(s) of {} mutual fund for $1 per share with a total of ${}.".format(shares,mutualfund.symbol,total)) 
     
     def sellMutualFund(self, symbol, shares):
         mf_price = round(np.random.uniform(0.9,1.2),2) 
@@ -50,7 +50,7 @@ class Portfolio():
             self.mfs.pop(symbol)
         else: 
             self.mfs[symbol] -= shares
-        self.hist_log.append("Sold {} share(s) of {} mutual fund for ${} per share with a total of ${}".format(shares,symbol,mf_price,total)) 
+        self.hist_log.append("Sold {} share(s) of {} mutual fund for ${} per share with a total of ${}.".format(shares,symbol,mf_price,total)) 
 
     def sellStock(self, symbol, shares):
         x = self.stocks[symbol][1]
@@ -62,7 +62,7 @@ class Portfolio():
             self.stocks.pop(symbol)
         else:
             self.stocks[symbol][0] -= shares
-        self.hist_log.append("Sold {} share(s) of {} stock for ${} per share with a total of ${}".format(shares,symbol,stock_price,total)) 
+        self.hist_log.append("Sold {} share(s) of {} stock for ${} per share with a total of ${}.".format(shares,symbol,stock_price,total)) 
 
     def withdrawCash(self, amount):
         if amount > self.cash:
@@ -71,6 +71,7 @@ class Portfolio():
         self.hist_log.append("Withdrew ${} from portforlio.".format(amount))
 
     def history(self):
+        print("Transactions: ")
         [print(i) for i in self.hist_log]
 
 class Stock():
