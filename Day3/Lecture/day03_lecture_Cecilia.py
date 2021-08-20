@@ -18,8 +18,11 @@
 
 # Example:
 while True print 'Hello world'
+<<<<<<< HEAD
 while True: 
     print("Hello")
+=======
+>>>>>>> upstream/main
 # In [1]: while True print 'Hello world'                                          
 #   File "<ipython-input-1-87563a47f7ef>", line 1
 #     while True print 'Hello world'
@@ -258,6 +261,11 @@ print_integer(1.2)
 print_integer('a')
 print_integer(1)
 
+<<<<<<< HEAD
+=======
+# more on except and raise: https://stackoverflow.com/questions/56942284/what-is-the-difference-between-raise-and-except
+
+>>>>>>> upstream/main
 
 #---------- break, continue, and else ----------#
 
