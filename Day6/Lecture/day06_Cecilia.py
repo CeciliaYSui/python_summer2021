@@ -289,20 +289,20 @@ for follower_id in joe.followers_ids()[0:25]:
 # By default, each method returns the first page, 
 # which usually contains a few dozen items.
 # We can define the pagination manually to get more results
-joe_statuses = []
-for p in range(0, 10):
-	# extend gets the entire tweet
-	joe_statuses.extend(api.user_timeline(id = 'JoeBiden', page = i, count = 20))
+# joe_statuses = []
+# for p in range(0, 10):
+# 	# extend gets the entire tweet
+# 	joe_statuses.extend(api.user_timeline(id = 'JoeBiden', page = i, count = 20))
 
-joe_statuses[0].text
-joe_statuses[len(joe_statuses)-1].text
+# joe_statuses[0].text
+# joe_statuses[len(joe_statuses)-1].text
 
-# How was it tweeted?
-source = [x.source for x in joe_statuses]
-source
+# # How was it tweeted?
+# source = [x.source for x in joe_statuses]
+# source
 
-# Print tweets with source equal to iPhone
-[x.text for x in joe_statuses if x.source == "Twitter for iPhone"]
+# # Print tweets with source equal to iPhone
+# [x.text for x in joe_statuses if x.source == "Twitter for iPhone"]
 
 
 # Cursor performs pagination easily for you
