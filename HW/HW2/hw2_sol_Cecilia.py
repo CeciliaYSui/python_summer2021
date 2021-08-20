@@ -6,7 +6,9 @@
 # 
 # Project Desription -- Create a csv file with the following information for each spoken address
 # --------------------- given by President Biden since he became president on 2021-01-20
-# Output -------------- csv file with 4 cols (date, title, full text, citation/footnote if exists)
+# Output -------------- csv file with 6 cols (date, title, link, full text, citation, footnote if exists)
+# Issues -------------- I was not sure if we are supposed to get citation or footnote, since they both exist., 
+# --------------------- so I gave them each a column. 
 # sources -------------
 # https://www.presidency.ucsb.edu/documents/app-categories/presidential/spoken-addresses-and-remarks
 # https://selenium-python.readthedocs.io/locating-elements.html#locating-elements-by-tag-name
@@ -170,4 +172,4 @@ df.to_csv("Biden_remarks.csv", index = False)
 # ---------------------------------------------------
 # Print a message in console to inform the users that the process is done
 # ---------------------------------------------------
-print("Porgram finished! \nBiden_remarks.csv has been successfully exported!")
+print("Program finished! \nBiden_remarks.csv has been successfully exported to path!")
