@@ -10,8 +10,8 @@ import tweepy
 
 ## Get access to API
 ## Copy/paste your keys here, move file out of github repo, import keys to public files.
-auth = tweepy.OAuthHandler('AK4vWVHiG4bEB5VV2ACFefF7N', 'H79mt6pFgnnlMeDJkW0BBiau95pbN9VW6mR9Za03AAXtpc1EH9')
-auth.set_access_token('1354196572435853312-HYmkB3wC6FAtfQSMcB9JmxCuCgC8W4', '370pnT98py7RPN7mlbNnvKzIObWB1xU6y2C1Q4QN1hABZ')    
+auth = tweepy.OAuthHandler('consumer key', 'consumer')
+auth.set_access_token('access token', '')    
 client = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 
