@@ -4,7 +4,7 @@
 
 import googlemaps
 import importlib
-api_key = "AIzaSyB5ZyS85-PmbX9RMb9LyQ80XncDdzVIOQE"  # Ben's API key
+api_key = "api key here"
 client = googlemaps.Client(api_key)
 
 """
