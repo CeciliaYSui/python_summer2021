@@ -146,6 +146,8 @@ def count_tweets(user="WUSTLPoliSci"):
     # The counts_all method call the full-archive Tweet counts endpoint to get Tweet volume based on the query
     count_results = client.counts_all(query=user) # python generator
     for i in count_results:
+        # the loop is only iterated once, since count_results has just 1 element for this user account
+        # total_tweets reflect the total number of tweets of the given account
         total_tweets = i["meta"]["total_tweet_count"]
         # dict_keys(['data', 'meta', '__twarc'])
     return total_tweets
