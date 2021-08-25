@@ -2,6 +2,8 @@ import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, and_, or_
 from sqlalchemy.orm import relationship, backref, sessionmaker
+from sqlalchemy import func
+
 
 engine = sqlalchemy.create_engine('sqlite:///geog.db', echo=False)
 
@@ -13,7 +15,8 @@ class Region(Base):
 
   id = Column(Integer, primary_key=True)
   name = Column(String)
-  departments = relationship("Department", backref = "region")
+  departments = relationship("Department", backref = "r") 
+  # d = relationship("Department", backref = "r")
 
   def __init__(self, name):
     self.name = name 
@@ -104,28 +107,39 @@ session.add_all([reg1, reg2, reg3])
 session.add_all([dept1, dept2, dept3, dept4])
 session.add_all([t1, t2, t3, t4, t5, t6, t7, t8])
 
-
 session.commit()
 
 # Some example querying 
-for town in session.query(Town).order_by(Town.id):
-  print(town.id, town.name, town.population)
+# for town in session.query(Town).order_by(Town.id):
+#   print(town.id, town.name, town.population)
 
 
 
 # TODO: 
 # 1. Display, by department, the cities having
 #    more than 50,000 inhabitants.
+# t6, t7, t8
+
+for town in session.query(Town).join(Department).filter(Town.population > 50000):
+  print(town.name, town.population)
 
 
 # 2. Display the towns with the minimum population in each region
 # print town name, population, region name
 # Hint: subqueries
 
+sub = session.query(func.min(Town.population).label('min')).join(Department).join(Region).group_by(Region.name).subquery()
+
+for town in session.query(Town).join(Department).join(Region).filter(sub.c.min == Town.population):
+  print(town.name, town.population, town.department.r.name)
+
 
 # 3. Display the total number of inhabitants
 #    per department using only a query (no lists!)
 
+
+for d in session.query(Department.deptname, Department.id, func.sum(Town.population).label("sum")).join(Department).group_by(Department).order_by(Department.deptname):
+  print(d.deptname, d.sum, d.id)
   
 
 
