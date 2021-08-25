@@ -47,9 +47,8 @@ def follower():
     for page in followers: 
         result = expansions.flatten(page)
         # print(len(result)) # = 628
-        for user in result: 
-            # append results to list 
-            all_followers.append([user["id"], user["username"]])
+        # append results to list 
+        [all_followers.append([user["id"], user["username"]]) for user in result]
     for i in all_followers:
         # The followers function gets followers for specified user
         followers = client.followers(user = i[1])
@@ -59,14 +58,13 @@ def follower():
             try:
                 result = expansions.flatten(page)
                 i.append(len(result))  
-                for user in result:
-                    followers_followers.append([user["id"], user["username"], -1, count_tweets(user["username"])])
+                [followers_followers.append([user["id"], user["username"], -1, count_tweets(user["username"])]) for user in result]
             except:
                 # The continue in the except part does not cause losing values, as long as the follower account is valid. 
                 continue  
-    for i in all_followers:
-        # append the tweet counts to list
-        i.append(count_tweets(i[1])) 
+    # append the tweet counts to list
+    [i.append(count_tweets(i[1])) for i in all_followers]
+
     
     l_id,l_username,l_followers,l_tweets = map(list, zip(*all_followers)) # separate to 4 individual lists
     # # most popular: max # of followers
@@ -95,9 +93,8 @@ def following():
     following = client.following(user="WUSTLPoliSci")
     for page in following: 
         result = expansions.flatten(page)
-        for user in result: 
-            # append the info to list 
-            all_friends.append([user["id"], user["username"]])
+        # append the info to list 
+        [all_friends.append([user["id"], user["username"]]) for user in result]
     for i in all_friends:
         # The followers function gets followers for specified user
         followers = client.followers(user = i[1])
@@ -107,14 +104,12 @@ def following():
             try:
                 result = expansions.flatten(page)
                 i.append(len(result))  
-                for user in result:
-                    friends_friends.append([user["id"], user["username"], -1, count_tweets(user["username"])])
+                [friends_friends.append([user["id"], user["username"], -1, count_tweets(user["username"])]) for user in result]
             except:
                 # The continue in the except part does not cause losing values, as long as the follower account is valid. 
                 continue 
-    for i in all_friends:
-        # append the tweet counts to list
-        i.append(count_tweets(i[1])) 
+    # append the tweet counts to list
+    [i.append(count_tweets(i[1])) for i in all_friends]
 
     l_id,l_username,l_followers,l_tweets = map(list, zip(*all_friends)) # separate to 4 individual lists
     # most popular: max # of followers
