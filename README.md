@@ -17,7 +17,7 @@ Instructor: Ben Noble
 | Day 07 | Mon. 8/23 | SQL and Database	            | |
 | Day 08 | Wed. 8/25 | Recursion and Sorting        | HW4 assigned, (due 8/30) |
 | Day 09 | Fri. 8/27 | More on Data Structure       | HW5 assigned, (due 9/03) |
-| Poster session    | TBD                           | | 
+| Poster session    | Tue. 9/07                         | | 
 
 ## Previous Instructors:
 Patrick Cunha Silva (2020), Ryden Buttler (2019), Erin Rossiter (2018),  Michele Torres (2017), David Carlson (2016), and Betül Demirkaya (2015), and Matt Dickenson (2014)
